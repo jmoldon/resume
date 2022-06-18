@@ -1,16 +1,16 @@
-all: index.html index.pdf index.docx index.txt
+all: cv.html cv.pdf cv.txt
 
-index.html: index.md style.css
-	pandoc --standalone -c style.css --from markdown --to html -o cv/index.html index.md
+cv.html: cv.md style.css
+	pandoc --standalone -c style.css --from markdown --to html -o cv.html cv.md
 
-index.pdf: index.html
-	wkhtmltopdf index.html index.pdf
+cv.pdf: cv.html
+	wkhtmltopdf cv.html cv.pdf
 
-index.docx: index.md
-	pandoc --from markdown --to docx -o index.docx index.md
+cv.docx: cv.md
+	pandoc --from markdown --to docx -o cv.docx cv.md
 
-index.txt: index.md
-	pandoc --standalone --from markdown+smart --to plain -o index.txt index.md
+cv.txt: cv.md
+	pandoc --standalone --from markdown+smart --to plain -o cv.txt cv.md
 
 clean:
 	rm -f *.html *.pdf *.docx *.txt
